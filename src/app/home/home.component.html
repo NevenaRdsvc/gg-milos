@@ -1,82 +1,58 @@
-<la-square>
-  <h2>Fakulteti</h2>
+<div class="home-wrapper">
+  <img
+    src="assets/images/ovo.png"
+    class="hero-container"
+    alt="Background">
 
-  <div class="search-filter-container">
-    <la-input
-      [type]="'text'"
-      [placeholder]="'Pretraži fakultet po nazivu'"
-      [icon]="'assets/images/logo-search.png'"
-      [(value)]="searchQuery"
-      (enterPressed)="applyFilters()">
-    </la-input>
+  <img
+    src="assets/images/logoo.png"
+    class="logo"
+    alt="Logo">
 
-    <div class="filter-container">
-      <button class="filter-button" (click)="toggleFilters()">
-        <img src="assets/images/filter-icon.png" alt="Filtriraj" class="filter-icon" />
+  <button
+    class="geo-button"
+    (click)="openIntroModal()">
+    START GAME
+  </button>
+
+  <!-- Intro modal -->
+  <div
+    class="intro-backdrop"
+    *ngIf="showIntroModal">
+    <div class="intro-card">
+
+      <button
+        class="close-button"
+        (click)="closeIntroModal()">
+        ✕
       </button>
 
-      <div class="filter-dropdown" *ngIf="showFilters">
+      <div class="intro-title">🎉 Instructions</div>
 
-        <div class="filter-block" [class.open]="showCityDropdown">
-          <div class="filter-header" (click)="toggleCityDropdown()">
-            Grad: {{ selectedCity || 'Svi gradovi' }}
-          </div>
-          <div class="filter-options">
-            <ul>
-              <li *ngFor="let city of cities" (click)="selectCity(city); $event.stopPropagation()">
-                {{ city }}
-              </li>
-              <li (click)="selectCity(''); $event.stopPropagation()">Svi gradovi</li>
-            </ul>
-          </div>
-        </div>
-
-        <div class="filter-block" [class.open]="showTypeDropdown">
-          <div class="filter-header" (click)="toggleTypeDropdown()">
-            Tip fakulteta: {{ selectedType || 'Svi tipovi' }}
-          </div>
-          <div class="filter-options">
-            <ul>
-              <li (click)="selectType('technical'); $event.stopPropagation()">Tehnički</li>
-              <li (click)="selectType('medical'); $event.stopPropagation()">Medicinski</li>
-              <li (click)="selectType('pharmacy'); $event.stopPropagation()">Farmaceutski</li>
-              <li (click)="selectType('art'); $event.stopPropagation()">Umetnički</li>
-              <li (click)="selectType('social'); $event.stopPropagation()">Društveni</li>
-              <li (click)="selectType('economic'); $event.stopPropagation()">Ekonomski</li>
-              <li (click)="selectType('sports'); $event.stopPropagation()">Sportski</li>
-              <li (click)="selectType(''); $event.stopPropagation()">Svi tipovi</li>
-            </ul>
-          </div>
-        </div>
-
-        <div class="filter-block" [class.open]="showExamDropdown">
-          <div class="filter-header" (click)="toggleExamDropdown()">
-            Prijemni ispit: {{ selectedExam || 'Svi ispiti' }}
-          </div>
-          <div class="filter-options">
-            <ul>
-              <li *ngFor="let exam of exams" (click)="selectExam(exam); $event.stopPropagation()">
-                {{ exam }}
-              </li>
-              <li (click)="selectExam(''); $event.stopPropagation()">Svi ispiti</li>
-            </ul>
-          </div>
-        </div>
-
-        <div class="filter-actions">
-          <button class="reset" (click)="resetFilters()">Poništi filtere</button>
-        </div>
+      <div class="intro-body">
+        <p>
+          Here's the deal, birthday legend: somewhere out there is a real
+          location we've picked just for you. Drop your pin, nail the guess,
+          and that's <em>exactly</em> where we're taking you as a gift.
+        </p>
+        <p>
+          And no, you won't even be driving this time. We've got a car
+          sorted, so your only job is to sit back, chill, and enjoy the day.
+        </p>
+        <p>
+          As for the actual trip to our secret location, we'll sort out the
+          details together. We're thinking next Wednesday. Clear your
+          calendar, superstar.
+        </p>
+        <p>Ready to find out where you're headed?</p>
       </div>
+
+      <button
+        class="intro-start-button"
+        (click)="goToGame()">
+        START
+      </button>
+
     </div>
   </div>
-
-  <la-faculties-list
-    [attr.data-key]="filterKey"
-    [searchQuery]="searchQuery"
-    [cityFilter]="selectedCity"
-    [typeFilter]="selectedType"
-    [examFilter]="selectedExam">
-  </la-faculties-list>
-
-  <la-tutorial-modal></la-tutorial-modal>
-</la-square>
+</div>

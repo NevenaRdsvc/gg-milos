@@ -1,0 +1,210 @@
+<div class="game-container">
+
+  <!-- Street View -->
+  <img
+    src="assets/images/kosmaj.png"
+    class="street-view"
+    [style.transform]="'scale(' + zoom + ')'"
+    (click)="collapseMap()">
+
+  <!-- Laza stack -->
+  <div class="laza-stack">
+    <div
+      class="laza-toast"
+      [class.removing]="toast.removing"
+      *ngFor="let toast of lazaToasts; trackBy: trackByLazaId">
+      <img
+        src="assets/images/laza.png"
+        class="laza-img"
+        alt="">
+    </div>
+  </div>
+
+  <!-- Player -->
+  <div class="player-panel left">
+    <div class="player-row">
+      <div class="avatar-col">
+        <img
+          src="assets/images/profile.png"
+          class="avatar">
+        <div class="player-label">
+          <span class="name">maksapn</span>
+          <span class="flag">🇷🇸</span>
+        </div>
+      </div>
+      <div class="health-bar">
+        <span class="health-text">{{ score }}</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- Top center: compass + timer -->
+  <div class="top-center">
+
+    <div class="compass">
+      <span class="tick">NW</span>
+      <span class="ticks"></span>
+      <span class="tick active">N</span>
+      <span class="ticks"></span>
+      <span class="tick">I</span>
+    </div>
+
+    <div class="timer-badge">
+      <svg
+        class="timer-outline"
+        width="170"
+        height="52"
+        viewBox="0 0 170 52">
+        <rect
+          class="outline-bg"
+          x="2"
+          y="2"
+          width="166"
+          height="48"
+          rx="24"
+          ry="24">
+        </rect>
+        <rect
+          class="outline-progress"
+          x="2"
+          y="2"
+          width="166"
+          height="48"
+          rx="24"
+          ry="24"
+          [style.stroke-dasharray]="outlinePerimeter"
+          [style.stroke-dashoffset]="outlineOffset">
+        </rect>
+      </svg>
+      <span class="timer-text">{{ timerLabel }}</span>
+    </div>
+
+  </div>
+
+  <!-- Zoom -->
+  <div class="zoom-controls">
+    <button (click)="zoomIn()">+</button>
+    <button (click)="zoomOut()">−</button>
+  </div>
+
+  <!-- Bottom right panel -->
+  <div class="hud-panel">
+
+    <div
+      #mapWrapper
+      class="map-wrapper"
+      [class.expanded]="mapExpanded">
+
+      <div
+        #mapContainer
+        class="map-canvas">
+      </div>
+
+    </div>
+
+    <button
+      class="guess-button"
+      [disabled]="!hasMarker || timeExpired"
+      (click)="submitGuess()">
+      GUESS
+    </button>
+
+  </div>
+
+  <!-- Result modal -->
+  <div
+    class="result-backdrop"
+    *ngIf="showResultModal">
+    <div
+      class="result-card"
+      [class.correct]="isCorrectGuess">
+
+      <button
+        class="close-button"
+        (click)="closeResultModal()">
+        ✕
+      </button>
+
+      <div class="result-title">
+        {{ isCorrectGuess ? '🎉 Congratulations!' : '📍 Not quite!' }}
+      </div>
+
+      <div class="result-subtitle">
+        {{ resultSubtitle }}
+      </div>
+
+      <img
+        *ngIf="isCorrectGuess"
+        src="assets/images/zajednicka.png"
+        class="result-image"
+        alt="">
+
+      <button
+        class="result-button"
+        [class.correct]="isCorrectGuess"
+        (click)="onResultContinue()">
+        {{ isCorrectGuess ? 'Continue' : 'Try again' }}
+      </button>
+
+    </div>
+  </div>
+
+  <!-- Merch modal -->
+  <div
+    class="result-backdrop"
+    *ngIf="showMerchModal">
+    <div class="result-card correct">
+
+      <button
+        class="close-button"
+        (click)="closeMerchModal()">
+        ✕
+      </button>
+
+      <div class="result-title">
+        🎉 You won!
+      </div>
+
+      <div class="result-subtitle">
+        You've unlocked official birthday GeoGuessr merch!
+      </div>
+
+      <button
+        class="result-button correct"
+        (click)="closeMerchModal()">
+        Amaze amaze amaze
+      </button>
+
+    </div>
+  </div>
+
+  <!-- Time's up modal -->
+  <div
+    class="result-backdrop"
+    *ngIf="showTimeUpModal">
+    <div class="result-card">
+
+      <button
+        class="close-button"
+        (click)="closeTimeUpModal()">
+        ✕
+      </button>
+
+      <div class="result-title">
+        ⏰ Ahh... Time's up!
+      </div>
+
+      <div class="result-subtitle">
+        Isteklo je vreme za ovu rundu.
+      </div>
+
+      <button
+        class="result-button"
+        (click)="closeTimeUpModal()">
+        KRAJ
+      </button>
+
+    </div>
+  </div>
+
+</div>

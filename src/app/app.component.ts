@@ -1,11 +1,24 @@
-import { CommonModule } from '@angular/common';
-import { Component, NgZone, OnInit } from '@angular/core';
-import { RouterModule } from '@angular/router';
-import { TranslateService } from '@ngx-translate/core';
+import {
+  CommonModule
+} from '@angular/common';
+import {
+  Component,
+  NgZone,
+  OnInit
+} from '@angular/core';
+import {
+  RouterModule
+} from '@angular/router';
+import {
+  TranslateService
+} from '@ngx-translate/core';
 
-import { environment } from '../environments/environment';
-import { LS_USER_LANGUAGE } from './shared/constants';
-import { AccountService } from './shared/services/account.service';
+import {
+  environment
+} from '../environments/environment';
+import {
+  LS_USER_LANGUAGE
+} from './shared/constants';
 
 @Component({
   selector: 'la-root',
@@ -21,7 +34,6 @@ export class AppComponent implements OnInit {
   constructor(
     private translateService: TranslateService,
     private zone: NgZone,
-    public accountService: AccountService
   ) {
     let languageToUse = environment.defaultLanguage;
     this.translateService.setDefaultLang(languageToUse);
@@ -40,13 +52,6 @@ export class AppComponent implements OnInit {
 
   ngOnInit(): void {
     this.zone.onStable.subscribe(() => (this.showLoadingSpinner = false));
-
-    if (this.accountService.authenticated()) {
-      this.accountService.getMyUserInfo().subscribe({
-        next: (user) => (this.accountService.user = user),
-        error: (err) => console.error('User info load error', err)
-      });
-    }
   }
 
   toggleDarkMode() {

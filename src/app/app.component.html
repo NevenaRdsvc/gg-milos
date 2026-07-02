@@ -1,13 +1,7 @@
 <main>
-<header class="app-header">
-  <button class="dark-mode-toggle" (click)="toggleDarkMode()">
-  <img 
-    [src]="isDark ? 'assets/images/sun.png' : 'assets/images/moon.png'" 
-    [alt]="isDark ? 'Light mode' : 'Dark mode'" 
-  />
-</button>
-</header>
-<router-outlet></router-outlet>
+  <header class="app-header">
+  </header>
+  <router-outlet></router-outlet>
 </main>
 
 <!-- @if(showLoadingSpinner) {

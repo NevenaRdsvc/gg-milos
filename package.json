@@ -1,5 +1,5 @@
 {
-  "name": "Academus",
+  "name": "hp-milos",
   "version": "0.0.0",
   "scripts": {
     "ng": "ng",
@@ -27,7 +27,9 @@
     "@ngx-translate/core": "^16.0.3",
     "@ngx-translate/http-loader": "^16.0.0",
     "animate.css": "^4.1.1",
+    "canvas-confetti": "^1.9.4",
     "ladda": "^2.0.3",
+    "leaflet": "^1.9.4",
     "ngx-extended-pdf-viewer": "^25.6.0-alpha.3",
     "pdfjs-dist": "^5.4.296",
     "rxjs": "~7.8.0",
@@ -43,6 +45,7 @@
     "@angular/cli": "^19.0.2",
     "@angular/compiler-cli": "^19.0.0",
     "@types/jasmine": "~5.1.0",
+    "@types/leaflet": "^1.9.21",
     "@typescript-eslint/eslint-plugin": "7.11.0",
     "@typescript-eslint/parser": "7.11.0",
     "eslint": "8.57.0",
