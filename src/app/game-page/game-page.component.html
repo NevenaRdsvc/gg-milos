@@ -82,7 +82,9 @@
   </div>
 
   <!-- Zoom -->
-  <div class="zoom-controls">
+  <div
+    class="zoom-controls"
+    *ngIf="!mapExpanded">
     <button (click)="zoomIn()">+</button>
     <button (click)="zoomOut()">−</button>
   </div>

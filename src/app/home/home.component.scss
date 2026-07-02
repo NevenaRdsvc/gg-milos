@@ -19,12 +19,13 @@
 
 .logo {
   position: absolute;
-  top: -10%;
+  top: 28px;
   left: 50%;
   z-index: 10;
-  width: 850px;
+  width: min(78vw, 320px);
   height: auto;
   transform: translateX(-50%);
+  transition: transform 0.2s ease;
 
   &:hover {
     transform: translateX(-50%) scale(1.06);
@@ -33,16 +34,16 @@
 
 .geo-button {
   position: absolute;
-  bottom: 170px;
+  bottom: 64px;
   left: 50%;
   z-index: 20;
-  min-width: 120px;
-  height: 80px;
-  padding: 0 40px;
+  min-width: 100px;
+  height: 56px;
+  padding: 0 28px;
   border: none;
   border-radius: 999px;
   box-shadow: 0 6px 18px rgba(0, 0, 0, 0.4);
-  font-size: 34px;
+  font-size: 20px;
   font-weight: 900;
   font-style: italic;
   color: #ffffff;
@@ -97,12 +98,13 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 18px;
-  width: 520px;
-  max-width: 90vw;
-  padding: 40px 36px;
+  gap: 14px;
+  width: 92vw;
+  max-height: 88vh;
+  overflow-y: auto;
+  padding: 26px 18px;
   border: 2px solid rgba(168, 130, 255, 0.6);
-  border-radius: 24px;
+  border-radius: 20px;
   background: linear-gradient(180deg, #2a1e57 0%, #1a1033 100%);
   box-shadow:
     0 0 0 1px rgba(168, 130, 255, 0.25),
@@ -135,7 +137,7 @@
 
 .intro-title {
   color: #ffffff;
-  font-size: 24px;
+  font-size: 19px;
   font-weight: 900;
   font-style: italic;
   text-align: center;
@@ -145,13 +147,13 @@
 
 .intro-body {
   color: #ffffff;
-  font-size: 22px;
+  font-size: 15px;
   font-weight: 500;
-  line-height: 1.6;
-  text-align: justify;
+  line-height: 1.55;
+  text-align: left;
 
   p {
-    margin: 0 0 14px;
+    margin: 0 0 12px;
     color: #ffffff;
 
     &:last-child {
@@ -167,10 +169,10 @@
 
 .intro-start-button {
   width: 100%;
-  padding: 16px;
+  padding: 14px;
   border: none;
   border-radius: 999px;
-  font-size: 20px;
+  font-size: 16px;
   font-weight: 900;
   font-style: italic;
   color: #ffffff;
@@ -184,5 +186,47 @@
 
   &:hover {
     filter: brightness(1.08);
+  }
+}
+
+@media (min-width: 768px) {
+  .logo {
+    top: -10%;
+    width: 850px;
+  }
+
+  .geo-button {
+    bottom: 170px;
+    min-width: 120px;
+    height: 80px;
+    padding: 0 40px;
+    font-size: 34px;
+  }
+
+  .intro-card {
+    width: 520px;
+    max-width: 90vw;
+    gap: 18px;
+    padding: 40px 36px;
+    border-radius: 24px;
+  }
+
+  .intro-title {
+    font-size: 24px;
+  }
+
+  .intro-body {
+    font-size: 22px;
+    line-height: 1.6;
+    text-align: justify;
+
+    p {
+      margin-bottom: 14px;
+    }
+  }
+
+  .intro-start-button {
+    padding: 16px;
+    font-size: 20px;
   }
 }

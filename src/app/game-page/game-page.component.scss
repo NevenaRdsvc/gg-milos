@@ -19,11 +19,11 @@
 .laza-stack {
   position: absolute;
   top: 50%;
-  left: 24px;
+  left: 12px;
   z-index: 4;
   display: flex;
   flex-direction: column;
-  gap: 10px;
+  gap: 8px;
   transform: translateY(-50%);
   pointer-events: none;
 }
@@ -38,7 +38,7 @@
 
 .laza-img {
   display: block;
-  height: 64px;
+  height: 44px;
   width: auto;
   filter: drop-shadow(0 4px 10px rgba(0, 0, 0, 0.5));
 }
@@ -69,18 +69,18 @@
 
 .player-panel {
   position: absolute;
-  top: 24px;
+  top: 10px;
   z-index: 5;
 
   &.left {
-    left: 24px;
+    left: 10px;
   }
 }
 
 .player-row {
   display: flex;
   align-items: flex-start;
-  gap: 12px;
+  gap: 8px;
 }
 
 .avatar-col {
@@ -88,12 +88,12 @@
   flex-direction: column;
   align-items: center;
   gap: 2px;
-  margin-top: -14px;
+  margin-top: -8px;
 }
 
 .avatar {
   z-index: 2;
-  width: 100px;
+  width: 40px;
   height: auto;
   filter: drop-shadow(0 2px 8px rgba(0, 0, 0, 0.35));
 }
@@ -101,32 +101,32 @@
 .player-label {
   display: flex;
   align-items: center;
-  font-size: 14px;
+  font-size: 10px;
   font-weight: 600;
   color: #ffffff;
   text-shadow: 0 1px 4px rgba(0, 0, 0, 0.6);
-  gap: 6px;
+  gap: 4px;
 }
 
 .top-center {
   position: absolute;
-  top: 24px;
+  top: 10px;
   left: 50%;
   z-index: 5;
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 10px;
+  gap: 6px;
   transform: translateX(-50%);
 }
 
 .health-bar {
   position: relative;
-  width: 340px;
-  height: 40px;
+  width: 100px;
+  height: 24px;
   overflow: hidden;
-  border: 4px solid #a08cf5;
-  border-radius: 8px;
+  border: 3px solid #a08cf5;
+  border-radius: 6px;
   box-shadow:
     inset 0 3px 6px rgba(255, 255, 255, 0.5),
     inset 0 -5px 0 rgba(0, 70, 0, 0.35),
@@ -143,7 +143,7 @@
   justify-content: center;
   height: 100%;
   color: #ffffff;
-  font-size: 18px;
+  font-size: 12px;
   font-weight: 800;
   font-style: italic;
   text-shadow: 0 1px 3px rgba(0, 0, 0, 0.5);
@@ -153,14 +153,14 @@
 .compass {
   display: flex;
   align-items: center;
-  padding: 8px 20px;
-  border-radius: 20px;
-  font-size: 13px;
+  padding: 4px 10px;
+  border-radius: 14px;
+  font-size: 9px;
   font-weight: 700;
   color: #ffffff;
-  letter-spacing: 1px;
+  letter-spacing: 0.5px;
   background: rgba(20, 20, 30, 0.55);
-  gap: 10px;
+  gap: 4px;
   backdrop-filter: blur(6px);
 
   .tick {
@@ -168,12 +168,13 @@
   }
 
   .tick.active {
-    font-size: 15px;
+    font-size: 10px;
     opacity: 1;
   }
 
   .ticks {
-    width: 60px;
+    display: none;
+    width: 30px;
     height: 1px;
     background: repeating-linear-gradient(90deg, rgba(255, 255, 255, 0.6) 0 1px, transparent 1px 8px);
   }
@@ -181,8 +182,8 @@
 
 .zoom-controls {
   position: absolute;
-  bottom: 24px;
-  left: 24px;
+  bottom: 12px;
+  left: 12px;
   z-index: 5;
   display: flex;
   flex-direction: column;
@@ -191,10 +192,10 @@
   box-shadow: 0 1px 4px rgba(0, 0, 0, 0.4);
 
   button {
-    width: 40px;
-    height: 40px;
+    width: 32px;
+    height: 32px;
     border: none;
-    font-size: 20px;
+    font-size: 16px;
     font-weight: 700;
     color: #333333;
     background: #ffffff;
@@ -212,24 +213,26 @@
 
 .hud-panel {
   position: absolute;
-  right: 24px;
-  bottom: 24px;
+  right: 12px;
+  bottom: 12px;
   z-index: 6;
   display: flex;
   flex-direction: column;
   align-items: stretch;
-  gap: 10px;
+  gap: 8px;
 }
 
 .timer-badge {
   position: relative;
-  width: 170px;
-  height: 52px;
+  width: 110px;
+  height: 36px;
 }
 
 .timer-outline {
   position: absolute;
   inset: 0;
+  width: 100%;
+  height: 100%;
 }
 
 .outline-bg {
@@ -253,15 +256,15 @@
   align-items: center;
   justify-content: center;
   color: #ffffff;
-  font-size: 20px;
+  font-size: 14px;
   font-weight: 800;
-  letter-spacing: 1px;
+  letter-spacing: 0.5px;
 }
 
 .map-wrapper {
   position: relative;
-  width: 320px;
-  height: 220px;
+  width: 150px;
+  height: 105px;
   overflow: hidden;
   border: 2px solid rgba(255, 255, 255, 0.6);
   border-radius: 12px;
@@ -270,8 +273,8 @@
   transition: width 0.28s ease, height 0.28s ease;
 
   &.expanded {
-    width: 900px;
-    height: 600px;
+    width: calc(100vw - 24px);
+    height: 60vh;
     cursor: default;
   }
 }
@@ -292,10 +295,10 @@
 
 
 .guess-button {
-  padding: 12px;
+  padding: 10px;
   border: none;
   border-radius: 999px;
-  font-size: 16px;
+  font-size: 13px;
   font-weight: 900;
   font-style: italic;
   color: #ffffff;
@@ -336,12 +339,13 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 20px;
-  width: 640px;
-  max-width: 90vw;
-  padding: 40px 32px;
+  gap: 14px;
+  width: 92vw;
+  max-height: 88vh;
+  overflow-y: auto;
+  padding: 26px 18px;
   border: 2px solid rgba(168, 130, 255, 0.6);
-  border-radius: 24px;
+  border-radius: 18px;
   background: linear-gradient(180deg, #2a1e57 0%, #1a1033 100%);
   box-shadow:
     0 0 0 1px rgba(168, 130, 255, 0.25),
@@ -382,7 +386,7 @@
 
 .result-title {
   color: #ffffff;
-  font-size: 28px;
+  font-size: 20px;
   font-weight: 900;
   font-style: italic;
   text-align: center;
@@ -391,7 +395,7 @@
 
 .result-subtitle {
   color: #ffffff;
-  font-size: 18px;
+  font-size: 14px;
   font-weight: 600;
   text-align: center;
 }
@@ -406,10 +410,10 @@
 
 .result-button {
   width: 100%;
-  padding: 16px;
+  padding: 13px;
   border: none;
   border-radius: 999px;
-  font-size: 18px;
+  font-size: 14px;
   font-weight: 900;
   font-style: italic;
   color: #ffffff;
@@ -431,5 +435,137 @@
 
   &:hover {
     filter: brightness(1.08);
+  }
+}
+
+@media (min-width: 768px) {
+  .laza-stack {
+    left: 24px;
+    gap: 10px;
+  }
+
+  .laza-img {
+    height: 64px;
+  }
+
+  .player-panel {
+    top: 24px;
+
+    &.left {
+      left: 24px;
+    }
+  }
+
+  .player-row {
+    gap: 12px;
+  }
+
+  .avatar-col {
+    margin-top: -14px;
+  }
+
+  .avatar {
+    width: 100px;
+  }
+
+  .player-label {
+    font-size: 14px;
+    gap: 6px;
+  }
+
+  .top-center {
+    top: 24px;
+    gap: 10px;
+  }
+
+  .health-bar {
+    width: 340px;
+    height: 40px;
+    border-width: 4px;
+    border-radius: 8px;
+  }
+
+  .health-text {
+    font-size: 18px;
+  }
+
+  .compass {
+    padding: 8px 20px;
+    border-radius: 20px;
+    font-size: 13px;
+    letter-spacing: 1px;
+    gap: 10px;
+
+    .tick.active {
+      font-size: 15px;
+    }
+
+    .ticks {
+      display: block;
+      width: 60px;
+    }
+  }
+
+  .zoom-controls {
+    bottom: 24px;
+    left: 24px;
+
+    button {
+      width: 40px;
+      height: 40px;
+      font-size: 20px;
+    }
+  }
+
+  .hud-panel {
+    right: 24px;
+    bottom: 24px;
+    gap: 10px;
+  }
+
+  .timer-badge {
+    width: 170px;
+    height: 52px;
+  }
+
+  .timer-text {
+    font-size: 20px;
+    letter-spacing: 1px;
+  }
+
+  .map-wrapper {
+    width: 320px;
+    height: 220px;
+
+    &.expanded {
+      width: 900px;
+      height: 600px;
+    }
+  }
+
+  .guess-button {
+    padding: 12px;
+    font-size: 16px;
+  }
+
+  .result-card {
+    width: 640px;
+    max-width: 90vw;
+    gap: 20px;
+    padding: 40px 32px;
+    border-radius: 24px;
+  }
+
+  .result-title {
+    font-size: 28px;
+  }
+
+  .result-subtitle {
+    font-size: 18px;
+  }
+
+  .result-button {
+    padding: 16px;
+    font-size: 18px;
   }
 }
