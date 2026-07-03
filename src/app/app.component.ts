@@ -3,9 +3,15 @@ import {
 } from '@angular/common';
 import {
   Component,
+  ElementRef,
   NgZone,
-  OnInit
+  OnInit,
+  ViewChild
 } from '@angular/core';
+import {
+  DomSanitizer,
+  SafeResourceUrl
+} from '@angular/platform-browser';
 import {
   RouterModule
 } from '@angular/router';
@@ -28,13 +34,26 @@ import {
   styleUrl: './app.component.scss'
 })
 export class AppComponent implements OnInit {
+  @ViewChild('musicFrame') musicFrame!: ElementRef<HTMLIFrameElement>;
+
   showLoadingSpinner = true;
   isDark = false;
+  musicMuted = true;
+
+  private readonly backgroundTrackId = 'pV2pC-mPUGU';
+  readonly backgroundMusicUrl: SafeResourceUrl;
 
   constructor(
     private translateService: TranslateService,
+    private sanitizer: DomSanitizer,
     private zone: NgZone,
   ) {
+    const src =
+      `https://www.youtube.com/embed/${this.backgroundTrackId}` +
+      `?autoplay=1&mute=1&loop=1&playlist=${this.backgroundTrackId}` +
+      `&controls=0&playsinline=1&enablejsapi=1`;
+    this.backgroundMusicUrl = this.sanitizer.bypassSecurityTrustResourceUrl(src);
+
     let languageToUse = environment.defaultLanguage;
     this.translateService.setDefaultLang(languageToUse);
     const savedLanguage = localStorage.getItem(LS_USER_LANGUAGE);
@@ -58,5 +77,17 @@ export class AppComponent implements OnInit {
     this.isDark = !this.isDark;
     document.body.classList.toggle('dark-mode', this.isDark);
     localStorage.setItem('darkMode', this.isDark ? 'true' : 'false');
+  }
+
+  toggleMusic() {
+    this.musicMuted = !this.musicMuted;
+    this.postPlayerCommand(this.musicMuted ? 'mute' : 'unMute');
+  }
+
+  private postPlayerCommand(func: string) {
+    this.musicFrame?.nativeElement.contentWindow?.postMessage(
+      JSON.stringify({ event: 'command', func, args: [] }),
+      '*'
+    );
   }
 }

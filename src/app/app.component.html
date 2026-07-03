@@ -4,6 +4,20 @@
   <router-outlet></router-outlet>
 </main>
 
+<iframe
+  #musicFrame
+  class="background-music"
+  [src]="backgroundMusicUrl"
+  allow="autoplay"
+  frameborder="0">
+</iframe>
+
+<button
+  class="music-toggle"
+  (click)="toggleMusic()">
+  {{ musicMuted ? '🔇' : '🔊' }}
+</button>
+
 <!-- @if(showLoadingSpinner) {
   <div class="loading-overlay">
     <la-spinner [strokeWidth]="5" [diameter]="80"></la-spinner>
