@@ -35,8 +35,8 @@
 
 .music-toggle {
   position: fixed;
-  right: 30px;
-  bottom: 90px;
+  top: 20px;
+  right: 20px;
   z-index: 60;
   display: flex;
   justify-content: center;
@@ -46,10 +46,15 @@
   border: none;
   border-radius: 50%;
   background: rgba(20, 20, 30, 0.6);
-  font-size: 18px;
+  color: #ffffff;
   cursor: pointer;
   backdrop-filter: blur(6px);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.35);
   transition: transform 0.2s, background 0.2s;
+
+  .material-icons {
+    font-size: 22px;
+  }
 
   &:hover {
     background: rgba(20, 20, 30, 0.8);
