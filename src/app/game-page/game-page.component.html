@@ -38,7 +38,7 @@
     </div>
   </div>
 
-  <!-- Top center: compass + timer -->
+  <!-- Top center: compass -->
   <div class="top-center">
 
     <div class="compass">
@@ -49,36 +49,37 @@
       <span class="tick">I</span>
     </div>
 
-    <div class="timer-badge">
-      <svg
-        class="timer-outline"
-        width="170"
-        height="52"
-        viewBox="0 0 170 52">
-        <rect
-          class="outline-bg"
-          x="2"
-          y="2"
-          width="166"
-          height="48"
-          rx="24"
-          ry="24">
-        </rect>
-        <rect
-          class="outline-progress"
-          x="2"
-          y="2"
-          width="166"
-          height="48"
-          rx="24"
-          ry="24"
-          [style.stroke-dasharray]="outlinePerimeter"
-          [style.stroke-dashoffset]="outlineOffset">
-        </rect>
-      </svg>
-      <span class="timer-text">{{ timerLabel }}</span>
-    </div>
+  </div>
 
+  <!-- Timer -->
+  <div class="timer-badge">
+    <svg
+      class="timer-outline"
+      width="170"
+      height="52"
+      viewBox="0 0 170 52">
+      <rect
+        class="outline-bg"
+        x="2"
+        y="2"
+        width="166"
+        height="48"
+        rx="24"
+        ry="24">
+      </rect>
+      <rect
+        class="outline-progress"
+        x="2"
+        y="2"
+        width="166"
+        height="48"
+        rx="24"
+        ry="24"
+        [style.stroke-dasharray]="outlinePerimeter"
+        [style.stroke-dashoffset]="outlineOffset">
+      </rect>
+    </svg>
+    <span class="timer-text">{{ timerLabel }}</span>
   </div>
 
   <!-- Zoom -->

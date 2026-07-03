@@ -69,7 +69,7 @@
 
 .player-panel {
   position: absolute;
-  top: 92px;
+  top: 44px;
   left: 50%;
   z-index: 5;
   transform: translateX(-50%);
@@ -96,7 +96,7 @@
 
 .avatar {
   z-index: 2;
-  width: 40px;
+  width: 60px;
   height: auto;
   filter: drop-shadow(0 2px 8px rgba(0, 0, 0, 0.35));
 }
@@ -125,7 +125,7 @@
 
 .health-bar {
   position: relative;
-  width: 100px;
+  width: 120px;
   height: 24px;
   overflow: hidden;
   border: 3px solid #a08cf5;
@@ -226,9 +226,13 @@
 }
 
 .timer-badge {
-  position: relative;
+  position: absolute;
+  top: 104px;
+  left: 50%;
+  z-index: 5;
   width: 110px;
   height: 36px;
+  transform: translateX(-50%);
 }
 
 .timer-outline {
@@ -530,6 +534,7 @@
   }
 
   .timer-badge {
+    top: 74px;
     width: 170px;
     height: 52px;
   }
