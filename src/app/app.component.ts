@@ -50,7 +50,7 @@ export class AppComponent implements OnInit {
   ) {
     const src =
       `https://www.youtube.com/embed/${this.backgroundTrackId}` +
-      `?autoplay=1&mute=1&loop=1&playlist=${this.backgroundTrackId}` +
+      `?autoplay=0&mute=1&loop=1&playlist=${this.backgroundTrackId}` +
       `&controls=0&playsinline=1&enablejsapi=1`;
     this.backgroundMusicUrl = this.sanitizer.bypassSecurityTrustResourceUrl(src);
 
@@ -81,7 +81,14 @@ export class AppComponent implements OnInit {
 
   toggleMusic() {
     this.musicMuted = !this.musicMuted;
-    this.postPlayerCommand(this.musicMuted ? 'mute' : 'unMute');
+
+    if (this.musicMuted) {
+      this.postPlayerCommand('mute');
+      this.postPlayerCommand('pauseVideo');
+    } else {
+      this.postPlayerCommand('unMute');
+      this.postPlayerCommand('playVideo');
+    }
   }
 
   private postPlayerCommand(func: string) {
