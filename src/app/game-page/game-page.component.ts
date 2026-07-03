@@ -60,8 +60,7 @@ export class GamePageComponent implements OnInit, AfterViewInit, OnDestroy {
   private readonly startCenter: L.LatLngTuple = [15, 20];
   private readonly startZoom = 2;
   private readonly targetLocation: L.LatLngTuple = [44.4667, 20.6167];
-  private readonly correctThresholdKm = 500;
-  private readonly exactThresholdKm = 50;
+  private readonly correctThresholdKm = 30;
 
   ngOnInit(): void {
     this.timerHandle = setInterval(() => {
@@ -165,10 +164,7 @@ export class GamePageComponent implements OnInit, AfterViewInit, OnDestroy {
     if (!this.isCorrectGuess) {
       return `You are ${this.distanceKm} km from the destination`;
     }
-    if (this.distanceKm <= this.exactThresholdKm) {
-      return 'Bravo Milos, we go to Kosmaj + Milica';
-    }
-    return `Bravo Milos, you were ${this.distanceKm} km away - but we are actually going to Kabinet Kosmaj, and we bring Milica too!`;
+    return 'Bravo Milos, we go to Kosmaj + Milica';
   }
 
   submitGuess() {

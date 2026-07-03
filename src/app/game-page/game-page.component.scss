@@ -69,17 +69,20 @@
 
 .player-panel {
   position: absolute;
-  top: 10px;
+  top: 92px;
+  left: 50%;
   z-index: 5;
+  transform: translateX(-50%);
 
   &.left {
-    left: 10px;
+    left: 50%;
   }
 }
 
 .player-row {
   display: flex;
   align-items: flex-start;
+  justify-content: center;
   gap: 8px;
 }
 
@@ -450,6 +453,8 @@
 
   .player-panel {
     top: 24px;
+    left: auto;
+    transform: none;
 
     &.left {
       left: 24px;
@@ -457,6 +462,7 @@
   }
 
   .player-row {
+    justify-content: flex-start;
     gap: 12px;
   }
 
